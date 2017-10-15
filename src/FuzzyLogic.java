@@ -34,8 +34,8 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(getOKButton()))
-            NKRendah=1.1;
-            NKTinggi=1.1;
+            NKRendah=0;
+            NKTinggi=0;
             em.emosi=getEmosiField();
             p.provokasi=getProvokasiField();
             
@@ -52,46 +52,53 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             
             if (EmosiRendah!=0 && ProvokasiRendah !=0){
                 System.out.println("a");
-                findMinRendah(EmosiRendah, ProvokasiRendah);
+                if (NKRendah< findMin(EmosiRendah,ProvokasiRendah))
+                    NKRendah= findMin(EmosiRendah,ProvokasiRendah);
             }
             if (EmosiRendah!= 0 && ProvokasiSedang !=0){
                 System.out.println("b");
-                findMinRendah(EmosiRendah, ProvokasiSedang);
+                if (NKRendah< findMin(EmosiRendah,ProvokasiSedang))
+                    NKRendah= findMin(EmosiRendah,ProvokasiSedang);
             }
             if (EmosiRendah!= 0 && ProvokasiTinggi!=0){
                 System.out.println("c");
-                findMinTinggi(EmosiRendah, ProvokasiTinggi);
+                if (NKTinggi< findMin(EmosiRendah,ProvokasiTinggi))
+                    NKTinggi= findMin(EmosiRendah,ProvokasiTinggi);
             }
             if (EmosiSedang!= 0 && ProvokasiRendah !=0){
                 System.out.println("d");
-                findMinRendah(EmosiSedang, ProvokasiRendah);
+                if (NKRendah< findMin(EmosiSedang,ProvokasiRendah))
+                    NKRendah= findMin(EmosiSedang,ProvokasiRendah);
             }
             if (EmosiSedang!= 0 && ProvokasiSedang !=0){
                 System.out.println("e");
-                findMinRendah(EmosiSedang, ProvokasiSedang);
+                if (NKRendah< findMin(EmosiSedang,ProvokasiSedang))
+                    NKRendah= findMin(EmosiSedang,ProvokasiSedang);
             }
             if (EmosiSedang!= 0 && ProvokasiTinggi !=0){
                 System.out.println("f");
-                findMinTinggi(EmosiSedang, ProvokasiTinggi);
+                if (NKTinggi< findMin(EmosiSedang,ProvokasiTinggi))
+                    NKTinggi= findMin(EmosiSedang,ProvokasiTinggi);
             }
             if (EmosiTinggi!= 0 && ProvokasiRendah !=0){
                 System.out.println("g");
-                findMinRendah(EmosiTinggi, ProvokasiRendah);
+                if (NKRendah< findMin(EmosiTinggi,ProvokasiRendah))
+                    NKRendah= findMin(EmosiTinggi,ProvokasiRendah);
             }
             if (EmosiTinggi!= 0 && ProvokasiSedang !=0){
                 System.out.println("h");
-                findMinTinggi(EmosiTinggi, ProvokasiSedang);
+                if (NKTinggi< findMin(EmosiTinggi,ProvokasiSedang))
+                    NKTinggi= findMin(EmosiTinggi,ProvokasiSedang);
             }
             if (EmosiTinggi!= 0 && ProvokasiTinggi !=0){
                 System.out.println("i");
-                findMinTinggi(EmosiTinggi, ProvokasiTinggi);
-            }
+                if (NKTinggi< findMin(EmosiTinggi,ProvokasiTinggi))
+                    NKTinggi= findMin(EmosiTinggi,ProvokasiTinggi);            }
             
-            if (NKTinggi == 1.1) Hasil =(NKRendah*47/NKRendah); 
-            else if (NKRendah ==1.1) Hasil =(NKTinggi*73/NKTinggi); 
+            if (NKTinggi == 0) Hasil =(NKRendah*47/NKRendah); 
+            else if (NKRendah ==0) Hasil =(NKTinggi*73/NKTinggi); 
             else Hasil =(NKRendah*47+NKTinggi*73)/NKRendah+NKTinggi; 
-            
-            System.out.println(Hasil);
+            System.out.println("Hasil = "+Hasil);
             System.out.println(NKTinggi);
             System.out.println(NKRendah);
             if (Hasil>50) JOptionPane.showMessageDialog(this,"Berita HOAX");
@@ -214,19 +221,17 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
 //        ProvokasiField.addKeyListener(this);
     }
 
-    public void findMinRendah(Double a, Double b){
-        if (a < NKRendah)
-            NKRendah=a;
-        if (b < NKRendah)
-            NKRendah=b;
+    public double findMin(Double a, Double b){
+        if (a < b) return a;
+        else return b;
     }
     
-    public void findMinTinggi(Double a, Double b){
-        if (a < NKTinggi)
-            NKTinggi=a;
-        if (b < NKTinggi)
-            NKTinggi=b;
-    }
+//    public void findMinTinggi(Double a, Double b){
+//        if (a < NKTinggi)
+//            NKTinggi=a;
+//        if (b < NKTinggi)
+//            NKTinggi=b;
+//    }
     
     public double getEmosiField() {
         Object o = EmosiField.getValue();
