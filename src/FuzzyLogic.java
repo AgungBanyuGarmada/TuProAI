@@ -25,11 +25,13 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
     private double ProvokasiRendah;
     private double ProvokasiSedang;
     private double ProvokasiTinggi;
+    private double ProvokasiSangatTinggi;
     private Emosi em;
     private Provokasi p;
     private double NKRendah;
     private double NKTinggi;
     private Double Hasil;
+    
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -49,6 +51,7 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             ProvokasiRendah = p.rendah();
             ProvokasiSedang = p.sedang();
             ProvokasiTinggi = p.tinggi();
+            ProvokasiSangatTinggi =p.sangatTinggi();
             
             if (EmosiRendah!=0 && ProvokasiRendah !=0){
                 System.out.println("a");
@@ -62,8 +65,13 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             }
             if (EmosiRendah!= 0 && ProvokasiTinggi!=0){
                 System.out.println("c");
-                if (NKTinggi< findMin(EmosiRendah,ProvokasiTinggi))
-                    NKTinggi= findMin(EmosiRendah,ProvokasiTinggi);
+                if (NKRendah< findMin(EmosiRendah,ProvokasiTinggi))
+                    NKRendah= findMin(EmosiRendah,ProvokasiTinggi);
+            }
+            if (EmosiRendah!= 0 && ProvokasiSangatTinggi!=0){
+                System.out.println("c");
+                if (NKTinggi< findMin(EmosiRendah,ProvokasiSangatTinggi))
+                    NKTinggi= findMin(EmosiRendah,ProvokasiSangatTinggi);
             }
             if (EmosiSedang!= 0 && ProvokasiRendah !=0){
                 System.out.println("d");
@@ -80,6 +88,11 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
                 if (NKTinggi< findMin(EmosiSedang,ProvokasiTinggi))
                     NKTinggi= findMin(EmosiSedang,ProvokasiTinggi);
             }
+            if (EmosiSedang!= 0 && ProvokasiSangatTinggi!=0){
+                System.out.println("c");
+                if (NKTinggi< findMin(EmosiSedang,ProvokasiSangatTinggi))
+                    NKTinggi= findMin(EmosiSedang,ProvokasiSangatTinggi);
+            }
             if (EmosiTinggi!= 0 && ProvokasiRendah !=0){
                 System.out.println("g");
                 if (NKRendah< findMin(EmosiTinggi,ProvokasiRendah))
@@ -93,8 +106,13 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             if (EmosiTinggi!= 0 && ProvokasiTinggi !=0){
                 System.out.println("i");
                 if (NKTinggi< findMin(EmosiTinggi,ProvokasiTinggi))
-                    NKTinggi= findMin(EmosiTinggi,ProvokasiTinggi);            }
-            
+                    NKTinggi= findMin(EmosiTinggi,ProvokasiTinggi);
+            }
+            if (EmosiTinggi!= 0 && ProvokasiSangatTinggi!=0){
+                System.out.println("c");
+                if (NKTinggi< findMin(EmosiTinggi,ProvokasiSangatTinggi))
+                    NKTinggi= findMin(EmosiTinggi,ProvokasiSangatTinggi);
+            }
             if (NKTinggi == 0) Hasil =(NKRendah*47/NKRendah); 
             else if (NKRendah ==0) Hasil =(NKTinggi*73/NKTinggi); 
             else Hasil =(NKRendah*47+NKTinggi*73)/NKRendah+NKTinggi; 

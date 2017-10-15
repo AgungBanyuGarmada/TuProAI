@@ -17,11 +17,17 @@ public class Provokasi {
     }
     public static double sedang(){
         if (provokasi < 65 && provokasi > 43) return -(provokasi-65)/22;
-        else if (provokasi >= 65 && provokasi <= 75) return 1;
-        else if (provokasi > 75 && provokasi < 90 )return (provokasi-75)/15;
+        else if (provokasi == 65 ) return 1;
+        else if (provokasi > 65 && provokasi < 70 )return (provokasi-65)/5;
         else return 0;
     }
     public static double tinggi(){
+        if (provokasi >65 && provokasi < 70) return -(provokasi-65)/5;
+        else if (provokasi >= 70 && provokasi <= 75) return 1;
+        else if (provokasi>75 && provokasi < 90) return (provokasi-75)/15;
+        else return 0;
+    }
+    public static double sangatTinggi(){
         if (provokasi >= 90) return 1;
         else if (provokasi>75 && provokasi < 90) return -(provokasi-90)/15;
         else return 0;
