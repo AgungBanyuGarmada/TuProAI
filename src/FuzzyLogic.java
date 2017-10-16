@@ -67,8 +67,8 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
                 System.out.println("c");
                 System.out.println("Emosi Rendah" + EmosiRendah);
                 System.out.println(ProvokasiTinggi);
-                if (NKTinggi < findMin(EmosiRendah,ProvokasiTinggi))
-                    NKTinggi = findMin(EmosiRendah,ProvokasiTinggi);
+                if (NKRendah < findMin(EmosiRendah,ProvokasiTinggi))
+                    NKRendah = findMin(EmosiRendah,ProvokasiTinggi);
             }
             if (EmosiRendah!= 0 && ProvokasiSangatTinggi!=0){
                 System.out.println("d");
@@ -121,7 +121,7 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             System.out.println("Hasil = "+Hasil);
             System.out.println(NKTinggi);
             System.out.println(NKRendah);
-            if (Hasil>7) JOptionPane.showMessageDialog(this,"Berita HOAX");
+            if (Hasil>72) JOptionPane.showMessageDialog(this,"Berita HOAX");
             else JOptionPane.showMessageDialog(this,"Berita Benar");
             setEmosiField();
             setProvokasiField();
