@@ -51,7 +51,7 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             ProvokasiRendah = p.rendah();
             ProvokasiSedang = p.sedang();
             ProvokasiTinggi = p.tinggi();
-            ProvokasiSangatTinggi =p.sangatTinggi();
+            ProvokasiSangatTinggi = p.sangatTinggi();
             
             if (EmosiRendah!=0 && ProvokasiRendah !=0){
                 System.out.println("a");
@@ -65,61 +65,63 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             }
             if (EmosiRendah!= 0 && ProvokasiTinggi!=0){
                 System.out.println("c");
-                if (NKRendah< findMin(EmosiRendah,ProvokasiTinggi))
-                    NKRendah= findMin(EmosiRendah,ProvokasiTinggi);
+                System.out.println("Emosi Rendah" + EmosiRendah);
+                System.out.println(ProvokasiTinggi);
+                if (NKTinggi < findMin(EmosiRendah,ProvokasiTinggi))
+                    NKTinggi = findMin(EmosiRendah,ProvokasiTinggi);
             }
             if (EmosiRendah!= 0 && ProvokasiSangatTinggi!=0){
-                System.out.println("c");
+                System.out.println("d");
                 if (NKTinggi< findMin(EmosiRendah,ProvokasiSangatTinggi))
                     NKTinggi= findMin(EmosiRendah,ProvokasiSangatTinggi);
             }
             if (EmosiSedang!= 0 && ProvokasiRendah !=0){
-                System.out.println("d");
+                System.out.println("e");
                 if (NKRendah< findMin(EmosiSedang,ProvokasiRendah))
                     NKRendah= findMin(EmosiSedang,ProvokasiRendah);
             }
             if (EmosiSedang!= 0 && ProvokasiSedang !=0){
-                System.out.println("e");
+                System.out.println("f");
                 if (NKRendah< findMin(EmosiSedang,ProvokasiSedang))
                     NKRendah= findMin(EmosiSedang,ProvokasiSedang);
             }
             if (EmosiSedang!= 0 && ProvokasiTinggi !=0){
-                System.out.println("f");
+                System.out.println("g");
                 if (NKTinggi< findMin(EmosiSedang,ProvokasiTinggi))
                     NKTinggi= findMin(EmosiSedang,ProvokasiTinggi);
             }
             if (EmosiSedang!= 0 && ProvokasiSangatTinggi!=0){
-                System.out.println("c");
+                System.out.println("h");
                 if (NKTinggi< findMin(EmosiSedang,ProvokasiSangatTinggi))
                     NKTinggi= findMin(EmosiSedang,ProvokasiSangatTinggi);
             }
             if (EmosiTinggi!= 0 && ProvokasiRendah !=0){
-                System.out.println("g");
+                System.out.println("i");
                 if (NKRendah< findMin(EmosiTinggi,ProvokasiRendah))
                     NKRendah= findMin(EmosiTinggi,ProvokasiRendah);
             }
             if (EmosiTinggi!= 0 && ProvokasiSedang !=0){
-                System.out.println("h");
+                System.out.println("j");
                 if (NKTinggi< findMin(EmosiTinggi,ProvokasiSedang))
                     NKTinggi= findMin(EmosiTinggi,ProvokasiSedang);
             }
             if (EmosiTinggi!= 0 && ProvokasiTinggi !=0){
-                System.out.println("i");
+                System.out.println("k");
                 if (NKTinggi< findMin(EmosiTinggi,ProvokasiTinggi))
                     NKTinggi= findMin(EmosiTinggi,ProvokasiTinggi);
             }
             if (EmosiTinggi!= 0 && ProvokasiSangatTinggi!=0){
-                System.out.println("c");
+                System.out.println("l");
                 if (NKTinggi< findMin(EmosiTinggi,ProvokasiSangatTinggi))
                     NKTinggi= findMin(EmosiTinggi,ProvokasiSangatTinggi);
             }
             if (NKTinggi == 0) Hasil =(NKRendah*47/NKRendah); 
             else if (NKRendah ==0) Hasil =(NKTinggi*73/NKTinggi); 
-            else Hasil =(NKRendah*47+NKTinggi*73)/NKRendah+NKTinggi; 
+            else Hasil =(NKRendah*47+NKTinggi*73)/(NKRendah+NKTinggi); 
             System.out.println("Hasil = "+Hasil);
             System.out.println(NKTinggi);
             System.out.println(NKRendah);
-            if (Hasil>50) JOptionPane.showMessageDialog(this,"Berita HOAX");
+            if (Hasil>7) JOptionPane.showMessageDialog(this,"Berita HOAX");
             else JOptionPane.showMessageDialog(this,"Berita Benar");
             setEmosiField();
             setProvokasiField();
