@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -41,9 +42,6 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             em.emosi=getEmosiField();
             p.provokasi=getProvokasiField();
             
-//            if(em.emosi==45 || em.emosi==70) em.emosi++;
-//            if(p.provokasi==43 || p.provokasi==75) p.provokasi++;
-            
             EmosiRendah = em.rendah();
             EmosiSedang = em.sedang();
             EmosiTinggi = em.tinggi();
@@ -54,73 +52,56 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             ProvokasiSangatTinggi = p.sangatTinggi();
             
             if (EmosiRendah!=0 && ProvokasiRendah !=0){
-                System.out.println("a");
                 if (NKRendah< findMin(EmosiRendah,ProvokasiRendah))
                     NKRendah= findMin(EmosiRendah,ProvokasiRendah);
             }
             if (EmosiRendah!= 0 && ProvokasiSedang !=0){
-                System.out.println("b");
                 if (NKRendah< findMin(EmosiRendah,ProvokasiSedang))
                     NKRendah= findMin(EmosiRendah,ProvokasiSedang);
             }
             if (EmosiRendah!= 0 && ProvokasiTinggi!=0){
-                System.out.println("c");
-                System.out.println("Emosi Rendah" + EmosiRendah);
-                System.out.println(ProvokasiTinggi);
                 if (NKRendah < findMin(EmosiRendah,ProvokasiTinggi))
                     NKRendah = findMin(EmosiRendah,ProvokasiTinggi);
             }
             if (EmosiRendah!= 0 && ProvokasiSangatTinggi!=0){
-                System.out.println("d");
                 if (NKTinggi< findMin(EmosiRendah,ProvokasiSangatTinggi))
                     NKTinggi= findMin(EmosiRendah,ProvokasiSangatTinggi);
             }
             if (EmosiSedang!= 0 && ProvokasiRendah !=0){
-                System.out.println("e");
                 if (NKRendah< findMin(EmosiSedang,ProvokasiRendah))
                     NKRendah= findMin(EmosiSedang,ProvokasiRendah);
             }
             if (EmosiSedang!= 0 && ProvokasiSedang !=0){
-                System.out.println("f");
                 if (NKRendah< findMin(EmosiSedang,ProvokasiSedang))
                     NKRendah= findMin(EmosiSedang,ProvokasiSedang);
             }
             if (EmosiSedang!= 0 && ProvokasiTinggi !=0){
-                System.out.println("g");
                 if (NKTinggi< findMin(EmosiSedang,ProvokasiTinggi))
                     NKTinggi= findMin(EmosiSedang,ProvokasiTinggi);
             }
             if (EmosiSedang!= 0 && ProvokasiSangatTinggi!=0){
-                System.out.println("h");
                 if (NKTinggi< findMin(EmosiSedang,ProvokasiSangatTinggi))
                     NKTinggi= findMin(EmosiSedang,ProvokasiSangatTinggi);
             }
             if (EmosiTinggi!= 0 && ProvokasiRendah !=0){
-                System.out.println("i");
                 if (NKRendah< findMin(EmosiTinggi,ProvokasiRendah))
                     NKRendah= findMin(EmosiTinggi,ProvokasiRendah);
             }
             if (EmosiTinggi!= 0 && ProvokasiSedang !=0){
-                System.out.println("j");
                 if (NKTinggi< findMin(EmosiTinggi,ProvokasiSedang))
                     NKTinggi= findMin(EmosiTinggi,ProvokasiSedang);
             }
             if (EmosiTinggi!= 0 && ProvokasiTinggi !=0){
-                System.out.println("k");
                 if (NKTinggi< findMin(EmosiTinggi,ProvokasiTinggi))
                     NKTinggi= findMin(EmosiTinggi,ProvokasiTinggi);
             }
             if (EmosiTinggi!= 0 && ProvokasiSangatTinggi!=0){
-                System.out.println("l");
                 if (NKTinggi< findMin(EmosiTinggi,ProvokasiSangatTinggi))
                     NKTinggi= findMin(EmosiTinggi,ProvokasiSangatTinggi);
             }
             if (NKTinggi == 0) Hasil =(NKRendah*47/NKRendah); 
             else if (NKRendah ==0) Hasil =(NKTinggi*73/NKTinggi); 
             else Hasil =(NKRendah*47+NKTinggi*73)/(NKRendah+NKTinggi); 
-            System.out.println("Hasil = "+Hasil);
-            System.out.println(NKTinggi);
-            System.out.println(NKRendah);
             if (Hasil>72) JOptionPane.showMessageDialog(this,"Berita HOAX");
             else JOptionPane.showMessageDialog(this,"Berita Benar");
             setEmosiField();
@@ -237,21 +218,18 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
 
     public void setActionListener(){
         OKButton.addActionListener(this);
-//        EmosiField.addKeyListener(this);
-//        ProvokasiField.addKeyListener(this);
+    }
+    
+    @Override
+    public void addNotify(){
+        super.addNotify();
+        SwingUtilities.getRootPane(OKButton).setDefaultButton(OKButton);
     }
 
     public double findMin(Double a, Double b){
         if (a < b) return a;
         else return b;
     }
-    
-//    public void findMinTinggi(Double a, Double b){
-//        if (a < NKTinggi)
-//            NKTinggi=a;
-//        if (b < NKTinggi)
-//            NKTinggi=b;
-//    }
     
     public double getEmosiField() {
         Object o = EmosiField.getValue();
@@ -270,29 +248,6 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
         Double i = n.doubleValue();
         return i;
     }
-    
-    
-//    
-//
-//    @Override
-//    public void keyTyped(KeyEvent e) {
-//        char karakter = e.getKeyChar();
-//        if(!(((karakter >= '0') && (karakter <= '9') || (karakter == KeyEvent.VK_BACK_SPACE) || (karakter == KeyEvent.VK_DELETE)))){
-//        getToolkit().beep();
-//        e.consume();
-//        }
-//    }
-//
-//    @Override
-//    public void keyPressed(KeyEvent e) {
-//        
-//    }
-//
-//    @Override
-//    public void keyReleased(KeyEvent e) {
-//        
-//    }
-
     public void setEmosiField() {
         EmosiField.setValue(0);
     }
