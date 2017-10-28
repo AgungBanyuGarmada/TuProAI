@@ -6,12 +6,12 @@ public class Provokasi {
     public static double provokasi;
     public static double rendah(){
         if (provokasi <= 43 ) return 1;
-        else if (provokasi >43 && provokasi < 65) return (65-provokasi)/22;
+        else if (provokasi >43 && provokasi < 55) return (55-provokasi)/12;
         else return 0;
     }
     public static double sedang(){
-        if (provokasi < 60 && provokasi > 43) return (provokasi-43)/17;
-        else if (provokasi == 60 ) return 1;
+        if (provokasi < 55 && provokasi > 43) return (provokasi-43)/12;
+        else if (provokasi >= 55 && provokasi <=60) return 1;
         else if (provokasi > 60 && provokasi < 65 )return (65-provokasi)/5;
         else return 0;
     }

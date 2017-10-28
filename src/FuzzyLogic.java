@@ -9,17 +9,13 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author banyu
  */
+
 public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
+    private double EmosiSangatRendah;
     private double EmosiRendah;
     private double EmosiSedang;
     private double EmosiTinggi;
@@ -42,6 +38,7 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             em.emosi=getEmosiField();
             p.provokasi=getProvokasiField();
             
+            EmosiSangatRendah = em.sangatrendah();
             EmosiRendah = em.rendah();
             EmosiSedang = em.sedang();
             EmosiTinggi = em.tinggi();
@@ -51,6 +48,22 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
             ProvokasiTinggi = p.tinggi();
             ProvokasiSangatTinggi = p.sangatTinggi();
             
+            if (EmosiSangatRendah!=0 && ProvokasiRendah !=0){
+                if (NKRendah< findMin(EmosiSangatRendah,ProvokasiRendah))
+                    NKRendah= findMin(EmosiSangatRendah,ProvokasiRendah);
+            }
+            if (EmosiSangatRendah!= 0 && ProvokasiSedang !=0){
+                if (NKRendah< findMin(EmosiSangatRendah,ProvokasiSedang))
+                    NKRendah= findMin(EmosiSangatRendah,ProvokasiSedang);
+            }
+            if (EmosiSangatRendah!= 0 && ProvokasiTinggi!=0){
+                if (NKRendah < findMin(EmosiSangatRendah,ProvokasiTinggi))
+                    NKRendah = findMin(EmosiSangatRendah,ProvokasiTinggi);
+            }
+            if (EmosiSangatRendah!= 0 && ProvokasiSangatTinggi!=0){
+                if (NKTinggi< findMin(EmosiSangatRendah,ProvokasiSangatTinggi))
+                    NKTinggi= findMin(EmosiSangatRendah,ProvokasiSangatTinggi);
+            }
             if (EmosiRendah!=0 && ProvokasiRendah !=0){
                 if (NKRendah< findMin(EmosiRendah,ProvokasiRendah))
                     NKRendah= findMin(EmosiRendah,ProvokasiRendah);
@@ -64,8 +77,8 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
                     NKRendah = findMin(EmosiRendah,ProvokasiTinggi);
             }
             if (EmosiRendah!= 0 && ProvokasiSangatTinggi!=0){
-                if (NKTinggi< findMin(EmosiRendah,ProvokasiSangatTinggi))
-                    NKTinggi= findMin(EmosiRendah,ProvokasiSangatTinggi);
+                if (NKRendah< findMin(EmosiRendah,ProvokasiSangatTinggi))
+                    NKRendah= findMin(EmosiRendah,ProvokasiSangatTinggi);
             }
             if (EmosiSedang!= 0 && ProvokasiRendah !=0){
                 if (NKRendah< findMin(EmosiSedang,ProvokasiRendah))
@@ -99,6 +112,7 @@ public class FuzzyLogic extends javax.swing.JFrame implements ActionListener{
                 if (NKTinggi< findMin(EmosiTinggi,ProvokasiSangatTinggi))
                     NKTinggi= findMin(EmosiTinggi,ProvokasiSangatTinggi);
             }
+            
             if (NKTinggi == 0) Hasil =(NKRendah*47/NKRendah); 
             else if (NKRendah ==0) Hasil =(NKTinggi*73/NKTinggi); 
             else Hasil =(NKRendah*47+NKTinggi*73)/(NKRendah+NKTinggi); 
